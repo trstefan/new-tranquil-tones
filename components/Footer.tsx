@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-   <footer className="w-full max-w-350 mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-8">
+   <footer className="w-full max-w-350 mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-8 p-8">
         <p className="text-[10px] text-moss-600 uppercase tracking-[0.4em]">
           Designed for Quiet Minds
         </p>

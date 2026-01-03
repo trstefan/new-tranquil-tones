@@ -18,15 +18,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative flex flex-col items-center bg-stone-950 selection:bg-moss-500/30">
-      {/* Grain Texture Overlay */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-
+    <div className="h-screen w-full relative flex flex-col bg-stone-950 selection:bg-moss-500/30">
       {/* Organic Mist/Fog Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[80%] h-[80%] bg-moss-500/10 blur-[120px] rounded-full animate-mist-drift"></div>
         <div
-          className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-500/5 blur-[120px] rounded-full animate-mist-drift"
+          className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-500/5 blur-[120px] rounded-full "
           style={{ animationDelay: "-5s" }}
         ></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-[80vh] bg-linear-to-b from-transparent via-moss-500/10 to-transparent"></div>
@@ -45,7 +42,7 @@ export default function Home() {
         </Link>
       </nav>
 
-      <main className="relative z-10 w-full max-w-350 mx-auto px-8 pt-48 pb-32">
+      <main className="relative z-10 w-full max-w-350 mx-auto px-8 pt-48 pb-16">
         {/* Hero Section */}
         <section className="text-center mb-40">
           <p className="text-moss-400 font-outfit text-xs tracking-[0.4em] uppercase mb-8 animate-slide-up">
@@ -115,8 +112,7 @@ export default function Home() {
           />
         </div>
       </main>
-
       <Footer />
-    </div>
+      </div>
   );
 }
