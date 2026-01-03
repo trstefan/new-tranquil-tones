@@ -12,17 +12,32 @@ interface SoundCardProps {
   isGlobalPlaying: boolean;
 }
 
-const WaveformBar: React.FC<{ index: number; volume: number; isActive: boolean }> = ({ index, volume, isActive }) => {
+const WaveformBar: React.FC<{ 
+  index: number; 
+  volume: number; 
+  isActive: boolean;
+}> = ({ index, volume, isActive }) => {
   const delays = [0, 0.2, 0.4, 0.1, 0.3];
   const durations = [1.2, 0.8, 1.5, 1.0, 1.3];
-  
+
+  const delay = delays[index % 5];
+  const duration = durations[index % 5];
+
   return (
     <div
-      className={`w-1 rounded-full bg-moss-300 transition-all duration-700 ease-in-out ${isActive ? 'opacity-80' : 'opacity-0'}`}
+      className={`w-1 rounded-full bg-moss-300 transition-all duration-700 ease-in-out ${
+        isActive ? 'opacity-80' : 'opacity-0'
+      }`}
       style={{
-        height: isActive ? `${12 + (volume * 18)}px` : '4px',
-        animation: isActive ? `wave-pulse ${durations[index % 5]}s ease-in-out infinite` : 'none',
-        animationDelay: `${delays[index % 5]}s`,
+        height: isActive ? `${12 + volume * 18}px` : '4px',
+
+        animationName: isActive ? 'wave-pulse' : 'none',
+        animationDuration: `${duration}s`,
+        animationTimingFunction: 'ease-in-out',
+        animationIterationCount: 'infinite',
+        animationDelay: `${delay}s`,
+        animationFillMode: 'both',
+
         transformOrigin: 'bottom',
       }}
     />

@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Compass, ArrowLeft, Leaf, Wind } from 'lucide-react';
+import { ArrowLeft, Leaf} from 'lucide-react';
+import Link from 'next/link';
 
 const NotFound = () => {
   return (
@@ -33,12 +33,12 @@ const NotFound = () => {
             This path led nowhere. The stillness you seek is back at the sanctuary.
           </p>
 
-          <button 
+          <Link href="/" 
             className="group relative inline-flex items-center gap-4 bg-moss-200 text-stone-950 px-10 py-4 rounded-full font-medium hover:bg-white hover:scale-105 transition-all duration-500 shadow-2xl shadow-moss-900/40"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Return to Sanctuary
-          </button>
+            Return Home
+          </Link>
         </div>
       </main>
     </div>

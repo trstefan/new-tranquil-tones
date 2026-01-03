@@ -25,7 +25,8 @@ import { Preset } from "@/types"
 
 import {SoundCard} from '@/components/SoundCard';
 import {Timer} from '@/components/Timer';
-import {Visualizer} from '@/components/Visualizer';
+import { ContributeModal } from '@/components/ContributeModal';
+import Link from 'next/link';
 
 
 
@@ -45,8 +46,10 @@ const page = () => {
   } = useAudioMixer();
 
   const [userPresets, setUserPresets] = useState<Preset[]>([]);
-    const [activePresetId, setActivePresetId] = useState<string | null>(null);
-      const [isControlsExpanded, setIsControlsExpanded] = useState(true);
+  const [activePresetId, setActivePresetId] = useState<string | null>(null);
+  const [isControlsExpanded, setIsControlsExpanded] = useState(false);
+  const [isContributeOpen, setIsContributeOpen] = useState(false);
+
 
 
   useEffect(() => {
@@ -88,6 +91,7 @@ const page = () => {
 
   return (
     <div className="min-h-screen animate-fade-in pb-56 selection:bg-moss-500/30">
+      <ContributeModal isOpen={isContributeOpen} onClose={() => setIsContributeOpen(false)} />
       {/* Background Atmosphere & Global Visualizer */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
         <div 
@@ -105,19 +109,26 @@ const page = () => {
       </div>
 
       {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-stone-950/40 backdrop-blur-xl border-b border-white/5">
+     <header className="fixed top-0 left-0 right-0 z-40 bg-stone-950/40 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-[1400px] mx-auto px-10 h-24 flex items-center justify-between">
-          <button className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 bg-moss-200 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-700">
               <Leaf className="text-stone-950 w-5 h-5" />
             </div>
             <div className="text-left">
-              <h1 className="text-lg font-outfit font-medium tracking-widest uppercase text-moss-100">Sanctuary</h1>
-              <p className="text-[9px] text-moss-500 uppercase tracking-[0.3em] font-bold">Compose Quiet</p>
+              <h1 className="text-lg font-outfit font-medium tracking-widest uppercase text-moss-100">Tranquil Tones</h1>
+              <p className="text-[9px] text-moss-500 uppercase tracking-[0.3em] font-bold">Sanctuary</p>
             </div>
-          </button>
+          </Link>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
+            <button 
+              onClick={() => setIsContributeOpen(true)}
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-moss-500 hover:text-moss-100 hover:bg-white/10 transition-all group"
+              title="Contribute"
+            >
+              <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" />
+            </button>
             <Timer 
               onComplete={stopAll} 
               onFade={(p) => setMasterVolume(p * masterVolume)} 
@@ -244,7 +255,14 @@ const page = () => {
                 sound={sound}
                 isActive={activeSounds.some(s => s.id === sound.id)}
                 volume={activeSounds.find(s => s.id === sound.id)?.volume || 0.5}
-                onToggle={(id) => { toggleSound(id); setActivePresetId(null); }}
+                onToggle={(id) => { 
+                  const isAdding = !activeSounds.some(s => s.id === id);
+                  if (isAdding && !isGlobalPlaying) {
+                    toggleGlobal();
+                  }
+                  toggleSound(id); 
+                  setActivePresetId(null); 
+                }}
                 onVolumeChange={updateSoundVolume}
                 isGlobalPlaying={isGlobalPlaying}
               />

@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import FeatureCard from "@/components/FeatureCard";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+
 
 export default function Home() {
   return (
@@ -37,10 +39,10 @@ export default function Home() {
             Tranquil Tones
           </span>
         </div>
-        <button className="group text-xs font-outfit tracking-widest uppercase text-moss-400 hover:text-moss-100 transition-colors flex items-center gap-2">
+        <Link href="/sanctuary" className="group text-xs font-outfit tracking-widest uppercase text-moss-400 hover:text-moss-100 transition-colors flex items-center gap-2 hover:cursor-pointer ">
           Enter Sanctuary{" "}
           <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-        </button>
+        </Link>
       </nav>
 
       <main className="relative z-10 w-full max-w-350 mx-auto px-8 pt-48 pb-32">
@@ -61,13 +63,13 @@ export default function Home() {
               to create a workspace that feels like a hidden forest.
             </p>
 
-            <button className="group relative inline-flex items-center gap-4 bg-moss-200 text-stone-950 px-12 py-5 rounded-full font-medium text-lg hover:bg-white hover:scale-105 transition-all duration-500 shadow-2xl shadow-moss-900/40">
+            <Link href="/sanctuary" className="group relative inline-flex items-center gap-4 bg-moss-200 text-stone-950 px-12 py-5 rounded-full font-medium text-lg hover:bg-white hover:scale-105 transition-all duration-500 shadow-2xl shadow-moss-900/40 hover:cursor-pointer">
               Start Session
               <Sun
                 className="w-5 h-5 animate-spin-slow"
                 style={{ animationDuration: "10s" }}
               />
-            </button>
+            </Link>
           </div>
         </section>
 
