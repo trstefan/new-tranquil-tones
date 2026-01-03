@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
-import { getIcon } from '../constants';
-import { Sound } from '../types';
+import { getIcon } from '@/constants';
+import { Sound } from '@/types';
 
 interface SoundCardProps {
   sound: Sound;
