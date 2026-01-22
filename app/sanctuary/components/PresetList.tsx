@@ -21,13 +21,13 @@ export const PresetList = ({
   onDeletePreset
 }: PresetListProps) => {
   return (
-    <div className="lg:col-span-3 space-y-10 md:space-y-12 animate-slide-up">
+    <div className="space-y-10 md:space-y-12 animate-slide-up">
       {/* Earthly Sets */}
       <section>
         <h2 className="text-[10px] font-bold text-moss-500 uppercase tracking-[0.4em] mb-6 md:mb-10 flex items-center gap-3">
           <Cloud className="w-3.5 h-3.5" /> Earthly Sets
         </h2>
-        <div className="space-y-3 md:space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 md:gap-4">
           {PRESETS.map(preset => {
             const isActiveSet = activePresetId === preset.id;
             return (
@@ -76,9 +76,9 @@ export const PresetList = ({
           )}
         </div>
         
-        <div className="space-y-3 md:space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 md:gap-4">
           {userPresets.length === 0 ? (
-            <div className="p-10 md:p-12 rounded-[2rem] md:rounded-[2.2rem] border border-dashed border-white/10 text-center bg-white/[0.01]">
+            <div className="col-span-full p-10 md:p-12 rounded-[2rem] md:rounded-[2.2rem] border border-dashed border-white/10 text-center bg-white/[0.01]">
               <p className="text-[10px] text-moss-600 uppercase tracking-widest font-medium">No custom sets yet</p>
             </div>
           ) : (

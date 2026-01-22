@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Timer as TimerIcon, Coffee, Moon, Play, Pause, RotateCcw, X } from 'lucide-react';
-import { TimerMode } from '../types';
+import { TimerMode } from '@/types';
 
 interface TimerProps {
   onComplete: () => void;

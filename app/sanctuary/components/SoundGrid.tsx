@@ -32,9 +32,9 @@ export const SoundGrid = ({
   };
 
   return (
-    <div className="lg:col-span-9 animate-slide-up [animation-delay:200ms]">
+    <div className="animate-slide-up [animation-delay:200ms]">
       <header className="mb-12 md:mb-20">
-        <h2 className="text-5xl sm:text-6xl md:text-8xl font-serif italic text-moss-100 mb-6 md:mb-8 leading-tight">
+        <h2 className="text-4xl sm:text-6xl md:text-8xl font-serif italic text-moss-100 mb-6 md:mb-8 leading-tight">
           Compose your <br /><span className="text-moss-500 not-italic">landscape.</span>
         </h2>
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 md:gap-8">

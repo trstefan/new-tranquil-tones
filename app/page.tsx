@@ -1,8 +1,4 @@
-import {
-  Zap,
-  Moon,
-  Mountain,
-} from "lucide-react";
+import { Zap, Moon, Mountain } from "lucide-react";
 import FeatureCard from "@/components/FeatureCard";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
@@ -10,14 +6,13 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FloatingIcons from "@/components/FloatingIcons";
 
-
 export default function Home() {
   return (
-    <div className="h-screen w-full relative flex flex-col bg-stone-950 selection:bg-moss-500/30">
-      <Background />
+    <div className="min-h-screen w-full relative flex flex-col bg-stone-950 selection:bg-moss-500/30 ">
       <Navbar />
+      <Background />
 
-      <main className="relative z-10 w-full max-w-350 mx-auto px-6 md:px-8 pt-32 md:pt-48 pb-16">
+      <main className="relative z-10 w-full max-w-350 mx-auto px-6 md:px-8 pt-8 md:pt-48 pb-16">
         <HeroSection />
 
         {/* Feature Cards Showcase */}

@@ -81,32 +81,32 @@ export const ControlBar = ({
 
           {isExpanded && (
             <>
-              <div className="flex-1 w-full space-y-6 animate-slide-up">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div className="flex-1 w-full space-y-4 md:space-y-6 animate-slide-up">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4">
                   <div className="flex items-center gap-3 md:gap-4">
-                    <span className="text-[10px] md:text-[11px] text-moss-500 font-bold uppercase tracking-[0.3em]">Master Composition</span>
-                    <div className="flex -space-x-2 overflow-x-auto pb-1 max-w-[200px] sm:max-w-none no-scrollbar">
+                    <span className="text-[9px] md:text-[11px] text-moss-500 font-bold uppercase tracking-[0.3em]">Master Composition</span>
+                    <div className="flex -space-x-2 overflow-x-auto pb-1 max-w-[150px] sm:max-w-none no-scrollbar">
                       {activeSounds.map(s => {
                         const sound = SOUNDS.find(snd => snd.id === s.id);
                         return sound ? (
-                          <div key={s.id} className="min-w-8 w-8 h-8 rounded-full bg-stone-950 border border-white/10 flex items-center justify-center text-moss-300 animate-slide-up shadow-lg">
-                            {getIcon(sound.icon, "w-4 h-4")}
+                          <div key={s.id} className="min-w-7 w-7 h-7 md:min-w-8 md:w-8 md:h-8 rounded-full bg-stone-950 border border-white/10 flex items-center justify-center text-moss-300 animate-slide-up shadow-lg">
+                            {getIcon(sound.icon, "w-3.5 h-3.5 md:w-4 h-4")}
                           </div>
                         ) : null;
                       })}
                     </div>
                   </div>
-                  <span className="self-end sm:self-auto text-moss-200 font-mono text-base md:text-lg">{Math.round(masterVolume * 100)}%</span>
+                  <span className="self-end sm:self-auto text-moss-200 font-mono text-sm md:text-lg">{Math.round(masterVolume * 100)}%</span>
                 </div>
                 
-                <div className="flex items-center gap-4 md:gap-8">
+                <div className="flex items-center gap-3 md:gap-8">
                   <button 
                     onClick={() => onSetMasterVolume(masterVolume === 0 ? 0.8 : 0)}
                     className="transition-transform active:scale-90"
                   >
-                    {masterVolume === 0 ? <VolumeX className="w-5 h-5 md:w-6 md:h-6 text-moss-600" /> : <Volume2 className="w-5 h-5 md:w-6 md:h-6 text-moss-400" />}
+                    {masterVolume === 0 ? <VolumeX className="w-4 h-4 md:w-6 md:h-6 text-moss-600" /> : <Volume2 className="w-4 h-4 md:w-6 md:h-6 text-moss-400" />}
                   </button>
-                  <div className="flex-1 relative h-2 group cursor-pointer">
+                  <div className="flex-1 relative h-1.5 md:h-2 group cursor-pointer">
                     <div className="absolute inset-0 bg-white/5 rounded-full overflow-hidden">
                       {isGlobalPlaying && (
                         <div 
@@ -127,15 +127,15 @@ export const ControlBar = ({
                       className="absolute top-0 bottom-0 left-0 bg-moss-200 rounded-full shadow-[0_0_15px_rgba(197,208,197,0.3)] transition-all duration-150 pointer-events-none"
                       style={{ width: `${masterVolume * 100}%` }}
                     >
-                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg scale-0 group-hover:scale-100 transition-transform"></div>
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 bg-white rounded-full shadow-lg scale-0 group-hover:scale-100 transition-transform"></div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="hidden sm:block border-l border-white/10 h-16 mx-4"></div>
+              <div className="hidden lg:block border-l border-white/10 h-16 mx-4"></div>
 
-              <div className="hidden sm:flex items-center gap-6 animate-slide-up">
+              <div className="hidden lg:flex items-center gap-6 animate-slide-up">
                 <div className="text-right">
                   <p className="text-[11px] text-moss-500 uppercase tracking-widest font-bold mb-1">Active Textures</p>
                   <p className="text-5xl font-serif italic text-moss-100 tabular-nums">{activeSounds.length}</p>

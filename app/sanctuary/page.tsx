@@ -1,18 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useAudioMixer } from '@/hooks/useAudioMixer';
-import { Preset } from "@/types"
-import { ContributeModal } from './components/ContributeModal';
-import { BackgroundEffects } from './components/BackgroundEffects';
-import { SanctuaryHeader } from './components/SanctuaryHeader';
-import { PresetList } from './components/PresetList';
-import { SoundGrid } from './components/SoundGrid';
-import { ControlBar } from './components/ControlBar';
+import { useState, useEffect } from "react";
+import { useAudioMixer } from "@/hooks/useAudioMixer";
+import { Preset } from "@/types";
+import { ContributeModal } from "./components/ContributeModal";
+import { BackgroundEffects } from "./components/BackgroundEffects";
+import { SanctuaryHeader } from "./components/SanctuaryHeader";
+import { PresetList } from "./components/PresetList";
+import { SoundGrid } from "./components/SoundGrid";
+import { ControlBar } from "./components/ControlBar";
 
 const page = () => {
-
- const {
+  const {
     activeSounds,
     masterVolume,
     setMasterVolume,
@@ -21,7 +20,7 @@ const page = () => {
     toggleSound,
     updateSoundVolume,
     setPreset,
-    stopAll
+    stopAll,
   } = useAudioMixer();
 
   const [userPresets, setUserPresets] = useState<Preset[]>([]);
@@ -30,71 +29,81 @@ const page = () => {
   const [isContributeOpen, setIsContributeOpen] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('tranquil-user-presets');
+    const saved = localStorage.getItem("tranquil-user-presets");
     if (saved) setUserPresets(JSON.parse(saved));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('tranquil-user-presets', JSON.stringify(userPresets));
+    localStorage.setItem("tranquil-user-presets", JSON.stringify(userPresets));
   }, [userPresets]);
 
   const saveCurrentAsPreset = () => {
     if (activeSounds.length === 0) return;
-    const name = prompt('Enter preset name:', `My Sanctuary ${userPresets.length + 1}`);
+    const name = prompt(
+      "Enter preset name:",
+      `My Sanctuary ${userPresets.length + 1}`,
+    );
     if (name) {
       const newPreset: Preset = {
         id: Date.now().toString(),
         name,
-        description: 'Organic blend',
-        sounds: [...activeSounds]
+        description: "Organic blend",
+        sounds: [...activeSounds],
       };
       setUserPresets([...userPresets, newPreset]);
     }
   };
 
   const deletePreset = (id: string) => {
-    setUserPresets(prev => prev.filter(p => p.id !== id));
+    setUserPresets((prev) => prev.filter((p) => p.id !== id));
   };
 
-    const handleSetPreset = (preset: Preset) => {
+  const handleSetPreset = (preset: Preset) => {
     setPreset(preset.sounds);
     setActivePresetId(preset.id);
-  }
+  };
 
   return (
     <div className="min-h-screen animate-fade-in pb-40 md:pb-56 selection:bg-moss-500/30">
-      <ContributeModal isOpen={isContributeOpen} onClose={() => setIsContributeOpen(false)} />
-      
+      <ContributeModal
+        isOpen={isContributeOpen}
+        onClose={() => setIsContributeOpen(false)}
+      />
+
       <BackgroundEffects activeCount={activeSounds.length} />
 
-      <SanctuaryHeader 
+      <SanctuaryHeader
         onContributeClick={() => setIsContributeOpen(true)}
-        onTimerComplete={stopAll} 
-        onTimerFade={(p) => setMasterVolume(p * masterVolume)} 
+        onTimerComplete={stopAll}
+        onTimerFade={(p) => setMasterVolume(p * masterVolume)}
         isGlobalPlaying={isGlobalPlaying}
       />
 
-      <main className="pt-28 md:pt-44 max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 relative z-10">
-        <PresetList 
-          activePresetId={activePresetId}
-          userPresets={userPresets}
-          activeSounds={activeSounds}
-          onSetPreset={handleSetPreset}
-          onSavePreset={saveCurrentAsPreset}
-          onDeletePreset={deletePreset}
-        />
+      <main className="pt-28 md:pt-44 max-w-350 mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 relative z-10">
+        <div className="order-2 lg:order-1 lg:col-span-3">
+          <PresetList
+            activePresetId={activePresetId}
+            userPresets={userPresets}
+            activeSounds={activeSounds}
+            onSetPreset={handleSetPreset}
+            onSavePreset={saveCurrentAsPreset}
+            onDeletePreset={deletePreset}
+          />
+        </div>
 
-        <SoundGrid 
-          activeSounds={activeSounds}
-          isGlobalPlaying={isGlobalPlaying}
-          onToggleSound={toggleSound}
-          onUpdateVolume={updateSoundVolume}
-          onSetActivePresetId={setActivePresetId}
-          onToggleGlobal={toggleGlobal}
-        />
+        <div className="order-1 lg:order-2 lg:col-span-9">
+          <SoundGrid
+            activeSounds={activeSounds}
+            isGlobalPlaying={isGlobalPlaying}
+            onToggleSound={toggleSound}
+            onUpdateVolume={updateSoundVolume}
+            onSetActivePresetId={setActivePresetId}
+            onToggleGlobal={toggleGlobal}
+          />
+        </div>
       </main>
 
-      <ControlBar 
+      <ControlBar
         isExpanded={isControlsExpanded}
         onToggleExpand={() => setIsControlsExpanded(!isControlsExpanded)}
         isGlobalPlaying={isGlobalPlaying}
@@ -104,7 +113,7 @@ const page = () => {
         onSetMasterVolume={setMasterVolume}
       />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

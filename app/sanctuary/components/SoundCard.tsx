@@ -96,28 +96,28 @@ export const SoundCard: React.FC<SoundCardProps> = ({
         <div className="absolute top-0 right-0 w-32 h-32 bg-moss-500/20 blur-3xl animate-mist-drift"></div>
       </div>
 
-      <div className="flex flex-col gap-6 relative z-10">
+      <div className="flex flex-col gap-5 md:gap-6 relative z-10">
         <div className="flex items-center justify-between">
           <div
             className={`
-              w-16 h-16 flex items-center justify-center rounded-[2.2rem] transition-all duration-700 relative
+              w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-[2rem] md:rounded-[2.2rem] transition-all duration-700 relative
               ${isActive 
                 ? 'bg-moss-200 text-stone-950 shadow-lg scale-110' 
                 : 'bg-stone-900/60 text-moss-400 group-hover:text-moss-200'
               }
             `}
           >
-            {getIcon(sound.icon, "w-7 h-7 relative z-10")}
+            {getIcon(sound.icon, "w-6 h-6 md:w-7 md:h-7 relative z-10")}
             
             {isActuallyPlaying && (
               <div 
-                className="absolute inset-0 rounded-[2.2rem] bg-moss-300/40 animate-ping"
+                className="absolute inset-0 rounded-[2rem] md:rounded-[2.2rem] bg-moss-300/40 animate-ping"
                 style={{ animationDuration: `${3 - volume * 2}s` }}
               ></div>
             )}
           </div>
 
-          <div className="flex items-end gap-1.5 h-10 px-2">
+          <div className="flex items-end gap-1 h-8 md:h-10 px-1 md:px-2">
             {[...Array(5)].map((_, i) => (
               <WaveformBar 
                 key={i} 
@@ -130,10 +130,10 @@ export const SoundCard: React.FC<SoundCardProps> = ({
         </div>
 
         <div>
-          <h3 className={`font-outfit font-medium text-xl transition-colors ${isActive ? 'text-moss-50' : 'text-moss-300 group-hover:text-moss-100'}`}>
+          <h3 className={`font-outfit font-medium text-lg md:text-xl transition-colors ${isActive ? 'text-moss-50' : 'text-moss-300 group-hover:text-moss-100'}`}>
             {sound.name}
           </h3>
-          <p className="text-[10px] text-moss-500 uppercase tracking-[0.25em] font-bold mt-1">{sound.type}</p>
+          <p className="text-[9px] md:text-[10px] text-moss-500 uppercase tracking-[0.25em] font-bold mt-1">{sound.type}</p>
         </div>
 
         <div 
