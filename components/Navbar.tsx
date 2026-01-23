@@ -11,13 +11,23 @@ const Navbar = () => {
           Tranquil Tones
         </span>
       </div>
-      <Link
+
+        <div className="flex items-center gap-8">
+          <Link
+            href="/manifesto"
+            className="md:block text-[10px] font-outfit tracking-widest uppercase text-moss-500 hover:text-moss-200 transition-colors"
+          >
+            Manifesto
+          </Link>
+          <Link
         href="/sanctuary"
         className="group text-[9px] md:text-xs font-outfit tracking-widest uppercase text-moss-400 hover:text-moss-100 transition-colors flex items-center gap-2 hover:cursor-pointer "
       >
         Enter Sanctuary{" "}
         <ArrowRight className="w-2.5 h-2.5 md:w-3 md:h-3 group-hover:translate-x-1 transition-transform" />
       </Link>
+        </div>
+     
     </nav>
   );
 };

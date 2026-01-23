@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import Background from "@/components/Background";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import FloatingIcons from "@/components/FloatingIcons";
+import FinalCTA from "@/components/FinalCTA";
+import SubHero from "@/components/SubHero";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
 
       <main className="relative z-10 w-full max-w-350 mx-auto px-6 md:px-8 pt-8 md:pt-48 pb-16">
         <HeroSection />
-
+        <SubHero />
         {/* Feature Cards Showcase */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-24 md:mb-40">
           <FeatureCard
@@ -36,8 +37,7 @@ export default function Home() {
             delay="[animation-delay:900ms]"
           />
         </section>
-
-        <FloatingIcons />
+        <FinalCTA />
       </main>
       <Footer />
     </div>
