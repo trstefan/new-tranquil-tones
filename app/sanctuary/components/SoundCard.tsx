@@ -79,20 +79,22 @@ export const SoundCard: React.FC<SoundCardProps> = ({
       className={`
         relative group p-7 rounded-[3rem] transition-all duration-700 border cursor-pointer overflow-hidden
         ${
-          isActive
+          isActuallyPlaying
             ? "bg-moss-500/10 border-moss-500/30 shadow-[0_0_40px_-5px_rgba(130,156,130,0.3)] scale-[1.02]"
+            : isActive
+            ? "bg-moss-500/5 border-moss-500/10"
             : "bg-white/3 border-white/5 hover:bg-white/6 hover:border-white/10"
         }
       `}
     >
       {/* Selection Ring */}
       {isActive && (
-        <div className="absolute inset-0 border-2 border-moss-400/20 rounded-[inherit] pointer-events-none animate-pulse-slow"></div>
+        <div className={`absolute inset-0 border-2 border-moss-400/20 rounded-[inherit] pointer-events-none ${isActuallyPlaying ? "animate-pulse-slow" : "opacity-30"}`}></div>
       )}
 
       {/* Internal Grain/Mist for texture */}
       <div
-        className={`absolute inset-0 pointer-events-none opacity-20 transition-opacity duration-1000 ${isActive ? "opacity-30" : "opacity-0"}`}
+        className={`absolute inset-0 pointer-events-none opacity-20 transition-opacity duration-1000 ${isActuallyPlaying ? "opacity-30" : "opacity-0"}`}
       >
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-40"></div>
         <div className="absolute top-0 right-0 w-32 h-32 bg-moss-500/20 blur-3xl animate-mist-drift"></div>
@@ -104,8 +106,10 @@ export const SoundCard: React.FC<SoundCardProps> = ({
             className={`
               w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-4xl md:rounded-[2.2rem] transition-all duration-700 relative
               ${
-                isActive
+                isActuallyPlaying
                   ? "bg-moss-200 text-stone-950 shadow-lg scale-110"
+                  : isActive
+                  ? "bg-moss-900/40 text-moss-300 border border-moss-500/30"
                   : "bg-stone-900/60 text-moss-400 group-hover:text-moss-200"
               }
             `}

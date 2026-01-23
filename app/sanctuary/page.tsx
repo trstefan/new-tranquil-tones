@@ -58,7 +58,20 @@ const page = () => {
     setUserPresets((prev) => prev.filter((p) => p.id !== id));
   };
 
+  useEffect(() => {
+    if (activeSounds.length === 0) {
+      setActivePresetId(null);
+      if (isGlobalPlaying) {
+        toggleGlobal();
+      }
+    }
+  }, [activeSounds, isGlobalPlaying, toggleGlobal]);
+
   const handleSetPreset = (preset: Preset) => {
+    if (activePresetId === preset.id) {
+       stopAll();
+       return;
+    }
     setPreset(preset.sounds);
     setActivePresetId(preset.id);
   };

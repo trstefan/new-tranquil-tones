@@ -1,12 +1,14 @@
 import React from "react";
 
+import { LucideIcon } from "lucide-react";
+
 const FeatureCard = ({
   icon: Icon,
   title,
   description,
   delay,
 }: {
-  icon: any;
+  icon: LucideIcon;
   title: string;
   description: string;
   delay: string;

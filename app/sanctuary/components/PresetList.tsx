@@ -24,7 +24,7 @@ export const PresetList = ({
     <div className="space-y-10 md:space-y-12 animate-slide-up">
       {/* Earthly Sets */}
       <section>
-        <h2 className="text-[10px] font-bold text-moss-500 uppercase tracking-[0.4em] mb-6 md:mb-10 flex items-center gap-3">
+        <h2 className="text-medium font-bold text-moss-500  mb-6 md:mb-10 flex items-center gap-3">
           <Cloud className="w-3.5 h-3.5" /> Earthly Sets
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 md:gap-4">

@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { 
   CloudRain, 
   Waves, 
@@ -21,6 +20,9 @@ export const SOUNDS: Sound[] = [
   { id: 'rain', name: 'Gentle Rain', type: 'nature', icon: 'CloudRain', url: 'https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg' },
   { id: 'waves', name: 'Ocean Waves', type: 'nature', icon: 'Waves', url: 'https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg' },
   { id: 'cafe', name: 'Cozy Cafe', type: 'ambient', icon: 'Coffee', url: 'https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg' },
+  { id: 'fireplace', name: 'Cozy Fireplace', type: 'ambient', icon: 'Flame', url: '/sounds/fireplace.mp3' },
+  { id: 'birds', name: 'Cozy Birds', type: 'ambient', icon: 'Bird', url: '/sounds/birds.mp3' },
+  { id: 'wind', name: 'Cozy Wind', type: 'ambient', icon: 'Wind', url: '/sounds/wind.mp3' },
 ];
 
 export const PRESETS: Preset[] = [
@@ -39,7 +41,6 @@ export const PRESETS: Preset[] = [
     description: 'The comfort of rain on a roof.',
     sounds: [
       { id: 'rain', volume: 0.8 },
-      { id: 'fire', volume: 0.4 }
     ]
   },
   {
@@ -51,15 +52,6 @@ export const PRESETS: Preset[] = [
       { id: 'wind', volume: 0.4 }
     ]
   },
-  {
-    id: 'sleep',
-    name: 'Ocean Sleep',
-    description: 'Drift away with the waves.',
-    sounds: [
-      { id: 'waves', volume: 0.7 },
-      { id: 'deep-space', volume: 0.2 }
-    ]
-  }
 ];
 
 export const getIcon = (iconName: string, className?: string) => {
