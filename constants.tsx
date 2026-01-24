@@ -26,21 +26,14 @@ export const SOUNDS: Sound[] = [
 ];
 
 export const PRESETS: Preset[] = [
-  {
-    id: 'focus',
-    name: 'Deep Focus',
-    description: 'Perfect for concentration and flow.',
-    sounds: [
-      { id: 'brown-noise', volume: 0.6 },
-      { id: 'leaves', volume: 0.3 }
-    ]
-  },
+ 
   {
     id: 'rainy',
     name: 'Rainy Shelter',
     description: 'The comfort of rain on a roof.',
     sounds: [
-      { id: 'rain', volume: 0.8 },
+      { id: 'rain', volume: 0.6 },
+      { id: 'fireplace', volume: 0.4 }
     ]
   },
   {
