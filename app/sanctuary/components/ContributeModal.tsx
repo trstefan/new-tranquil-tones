@@ -71,7 +71,7 @@ export const ContributeModal = ({ isOpen, onClose }: ContributeModalProps) => {
                     <p className="text-moss-100 font-medium text-sm md:text-base">
                       Contribute code to{" "}
                       <a
-                        href="https://github.com"
+                        href="https://github.com/trstefan/new-tranquil-tones"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-moss-400 hover:text-moss-200 underline decoration-moss-500/30 underline-offset-4 transition-all inline-flex items-center gap-1"
